@@ -6,7 +6,7 @@ function Nav() {
     <div className='nav'>
         <Link to="/"><h2>Home</h2></Link>
         <Link to="/insertar_empleado"><h2>Add new user</h2></Link>
-        <Link><h2>support creator</h2></Link>
+        <Link to="https://harold-enyoi.netlify.app/"><h2>support creator</h2></Link>
     </div>
   )
 }

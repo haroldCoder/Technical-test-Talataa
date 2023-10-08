@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import InsertUser from './components/InsertUser';
+import Footer from './components/Footer';
 
 function App() {
   useEffect(()=>{
@@ -26,6 +27,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/insertar_empleado' element={<InsertUser />} />
           </Routes>
+          <Footer />
       </BrowserRouter>
     </>
   )
