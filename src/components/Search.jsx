@@ -1,13 +1,23 @@
+import axios from 'axios';
 import React from 'react'
 
-export default function Search() {
+export default function Search({setEmployees}) {
     const [searchTerm, setSearchTerm] = React.useState('');
 
     const handleSearch = (event) => {
       const value = event.target.value;
       setSearchTerm(value);
-      onSearch(value);
     };
+
+    const submitFilter = async() =>{
+        let res = (await axios.get(`${import.meta.env.VITE_API_EMPLOYEE}?bysearch=${searchTerm}`)).data;
+        res = res.sort((a, b)=>{
+            const A = a.nombre.toLowerCase();
+            const B = b.nombre.toLowerCase();
+            return A.localeCompare(B);
+        })
+        setEmployees(res);
+    }
   
     return (
       <div className="search-bar">
@@ -17,6 +27,7 @@ export default function Search() {
           value={searchTerm}
           onChange={handleSearch}
         />
+        <button onClick={submitFilter}>Search</button>
       </div>
     );
 }

@@ -15,14 +15,14 @@ function Home() {
             //la respuesta va aa ser el valor de los employees
             setEmployees(res.data);
         }
-
-        getData();
+        //llamar la funcion para que traiga todos los datos.
+        //getData()
     }, []);
 
   return (
     <div className='home'>
         <section className='search'>
-            <Search />
+            <Search setEmployees={setEmployees} />
         </section>
         <section>
            {
