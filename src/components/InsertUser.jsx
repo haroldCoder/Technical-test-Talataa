@@ -1,8 +1,7 @@
 import React from 'react'
 
 export default function InsertUser() {
-    const [employee, setEmployee] = useState({
-        employeeID: '',
+    const [employee, setEmployee] = React.useState({
         documento: '',
         nombre: '',
         apellidos: '',
@@ -31,17 +30,6 @@ export default function InsertUser() {
           <h2>Formulario de Empleado</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="employeeID">Employee ID:</label>
-              <input
-                type="number"
-                id="employeeID"
-                name="employeeID"
-                value={employee.employeeID}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
               <label htmlFor="documento">Documento:</label>
               <input
                 type="number"
@@ -49,6 +37,7 @@ export default function InsertUser() {
                 name="documento"
                 value={employee.documento}
                 onChange={handleChange}
+                placeholder='Documento'
                 required
               />
             </div>
@@ -61,6 +50,7 @@ export default function InsertUser() {
                 value={employee.nombre}
                 onChange={handleChange}
                 required
+                placeholder='Nombre'
               />
             </div>
             <div className="form-group">
@@ -72,6 +62,7 @@ export default function InsertUser() {
                 value={employee.apellidos}
                 onChange={handleChange}
                 required
+                placeholder='Apellidos'
               />
             </div>
             <div className="form-group">
@@ -83,6 +74,7 @@ export default function InsertUser() {
                 value={employee.telefono}
                 onChange={handleChange}
                 required
+                placeholder='Telefono'
               />
             </div>
             <div className="form-group">
@@ -94,6 +86,7 @@ export default function InsertUser() {
                 value={employee.email}
                 onChange={handleChange}
                 required
+                placeholder='Email'
               />
             </div>
             <div className="form-group">
@@ -105,6 +98,7 @@ export default function InsertUser() {
                 value={employee.direccion}
                 onChange={handleChange}
                 required
+                placeholder='Direccion'
               />
             </div>
             <div className="form-group">
@@ -116,6 +110,7 @@ export default function InsertUser() {
                 value={employee.genero}
                 onChange={handleChange}
                 required
+                placeholder='Genero'
               />
             </div>
             <button type="submit">Guardar</button>
