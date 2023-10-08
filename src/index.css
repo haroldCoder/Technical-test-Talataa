@@ -36,8 +36,13 @@ body{
   color: #444;
   font-size: 14.2px;
 }
+.nav > a{
+  text-decoration: none;
+  outline: none;
+  color: #444;
+}
 
-.nav > h2{
+.nav > a{
   margin-left: 22px;
 }
 

@@ -9,23 +9,23 @@ import InsertUser from './components/InsertUser';
 
 function App() {
   useEffect(()=>{
-      $(".nav > h2").hover(function(){
+      $(".nav > a").hover(function(){
         $(this).css("color", "#2AABFF");
       }, function(){
         $(this).css("color", "#444");
       });
-      $(".nav > h2").css("cursor", "pointer");
+      $(".nav > a").css("cursor", "pointer");
   },[])
 
   return (
     <>
-      <Header />
-      <Nav />
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/insertar_empleado' element={<InsertUser />} />
-        </Routes>
+        <Header />
+        <Nav />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/insertar_empleado' element={<InsertUser />} />
+          </Routes>
       </BrowserRouter>
     </>
   )
