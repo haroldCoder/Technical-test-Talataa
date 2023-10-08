@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 
 export default function InsertUser() {
@@ -21,7 +22,16 @@ export default function InsertUser() {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        
+        axios.post(import.meta.env.VITE_API_EMPLOYEE, {
+            "Documento": employee.documento,
+            "Nombre": employee.nombre,
+            "Apellidos": employee.apellidos,
+            "Teléfono": employee.telefono,
+            "Email": employee.email,
+            "Dirección": employee.direccion,
+            "Género": employee.genero,
+        }) //enviar todos los datos segun lo necesite la api
+        .then((res)=>console.log(res.data)); //si todo sale bien, mostrar en consola mensaje
         console.log(employee);
       };
     
@@ -35,10 +45,10 @@ export default function InsertUser() {
                 type="number"
                 id="documento"
                 name="documento"
-                value={employee.documento}
-                onChange={handleChange}
-                placeholder='Documento'
-                required
+                value={employee.documento} //valor del employee
+                onChange={handleChange} //mandarle al metodo el name del input con su value
+                placeholder='Documento' //mostrar lo que solicita el input
+                required //decir que es requerido
               />
             </div>
             <div className="form-group">
