@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Test_technical.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Test_technical.Controllers
 {
     [Route("api")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
     public class EmployeeController : Controller
     {
         private readonly ContextDB _contextdb;
