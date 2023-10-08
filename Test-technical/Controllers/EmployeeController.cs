@@ -9,13 +9,15 @@ namespace Test_technical.Controllers
     public class EmployeeController : Controller
     {
         private readonly ContextDB _contextdb;
+        private readonly HttpClient _noSslVerificationClient;
         public IActionResult Index()
         {
             return View();
         }
-        public EmployeeController(ContextDB context)
+        public EmployeeController(ContextDB context, IHttpClientFactory httpClientFactory)
         {
             _contextdb = context;
+            this._noSslVerificationClient = httpClientFactory.CreateClient("NoSSLVerification");
         }
 
         [HttpGet("employee")]
@@ -49,6 +51,7 @@ namespace Test_technical.Controllers
                 Nombre = employeesdb.Nombre,
                 Apellidos = employeesdb.Apellidos,
                 Teléfono = employeesdb.Teléfono,
+                Dirección = employeesdb.Dirección,
                 Email = employeesdb.Email,
                 Género = employeesdb.Género
             };
