@@ -19,9 +19,21 @@ export default function InsertUser() {
           [name]: value,
         }); //guardar el value en el name asignado
       };
+
+      const validateEmail = (email) => {
+        // Expresión regular para validar el formato de email
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(email);
+      };
     
       const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!validateEmail(employee.email)) {
+            alert('Ingresa un correo electronico valido');
+            return;
+        }
+
         axios.post(import.meta.env.VITE_API_EMPLOYEE, {
             "Documento": employee.documento,
             "Nombre": employee.nombre,
@@ -42,13 +54,14 @@ export default function InsertUser() {
             <div className="form-group">
               <label htmlFor="documento">Documento:</label>
               <input
-                type="number"
+                type="text"
                 id="documento"
                 name="documento"
                 value={employee.documento} //valor del employee
                 onChange={handleChange} //mandarle al metodo el name del input con su value
                 placeholder='Documento' //mostrar lo que solicita el input
                 required //decir que es requerido
+                pattern="[0-9]*"
               />
             </div>
             <div className="form-group">
