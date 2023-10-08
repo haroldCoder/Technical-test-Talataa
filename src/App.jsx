@@ -5,6 +5,7 @@ import $ from "jquery";
 import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
+import InsertUser from './components/InsertUser';
 
 function App() {
   useEffect(()=>{
@@ -23,6 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/insertar_empleado' element={<InsertUser />} />
         </Routes>
       </BrowserRouter>
     </>
