@@ -7,7 +7,7 @@ namespace Test_technical.Controllers
 {
     [Route("api")]
     [ApiController]
-    [EnableCors("AllowSpecificOrigin")]
+    [EnableCors("AllowSpecificOrigin")] // se le dice que el endpoint es api que el un ApiController, y que permita las cors.
     public class EmployeeController : Controller
     {
         private readonly ContextDB _contextdb;
@@ -19,7 +19,7 @@ namespace Test_technical.Controllers
         public EmployeeController(ContextDB context, IHttpClientFactory httpClientFactory)
         {
             _contextdb = context;
-            this._noSslVerificationClient = httpClientFactory.CreateClient("NoSSLVerification");
+            this._noSslVerificationClient = httpClientFactory.CreateClient("NoSSLVerification"); // configuracion para que ignore la verificacion ssl
         }
 
         [HttpGet("employee")]
@@ -27,7 +27,7 @@ namespace Test_technical.Controllers
         {
             if (string.IsNullOrWhiteSpace(bysearch))
             {
-                return _contextdb.tblEmployee.ToList();
+                return _contextdb.tblEmployee.ToList(); //en caso de que no se le pasen query, se retornan todos los empleados
             }
 
             // Filtra los registros por nombre o apellido que coincidan con bysearch
@@ -56,12 +56,12 @@ namespace Test_technical.Controllers
                 Dirección = employeesdb.Dirección,
                 Email = employeesdb.Email,
                 Género = employeesdb.Género
-            };
+            }; // crear un objeto que instancia de EmployeesDB para que la informacion quede guardada en el objeto
 
-            _contextdb.tblEmployee.Add(employee);
-            _contextdb.SaveChanges();
+            _contextdb.tblEmployee.Add(employee); // se guarda esos datos en la db
+            _contextdb.SaveChanges(); // se guardan los cambios
 
-            return Ok("Empleado añadido");
+            return Ok("Empleado añadido"); // si todo sale bien se envia un mensaje de exito
         }
 
         public bool isValidEmail(string email)

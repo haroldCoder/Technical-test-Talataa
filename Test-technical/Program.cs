@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ContextDB>(options =>
-options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+options.UseSqlServer("name=ConnectionStrings:DefaultConnection")); // se abre la conexion al sql server
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowAnyHeader();
     });
-});
+}); // se permiten las cors a todos los origenes
 
 var app = builder.Build();
 
@@ -35,7 +35,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowSpecificOrigin");
+app.UseCors("AllowSpecificOrigin"); // permitir cors
 
 app.UseAuthorization();
 

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Test_technical.Models
 {
-    public class EmployeesDB
+    public class EmployeesDB // clase para crear la estructura de la tabla employees y sea mas facil el manejo de la db
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
